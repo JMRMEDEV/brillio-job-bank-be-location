@@ -1,0 +1,68 @@
+# Dependencies
+node_modules/
+functions/node_modules/
+
+# Build outputs
+functions/lib/
+functions/dist/
+
+# Environment files
+.env
+.env.*
+!.env.template
+
+# Firebase
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Yarn
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+functions/.yarn/install-state.gz
+
+# Scripts dependencies (keep scripts in git, ignore their node_modules)
+functions/scripts/*/node_modules/
+functions/scripts/*/.env
+functions/scripts/*/.env.*
+functions/scripts/*/.yarn/cache
+functions/scripts/*/.yarn/unplugged
+functions/scripts/*/.yarn/install-state.gz
+
+# Data files
+*.csv
+*.xls
+*.xlsx

@@ -1,9 +1,0 @@
-*.gz
-
-*node_modules
-
-*.csv
-
-*.xls
-
-*.env

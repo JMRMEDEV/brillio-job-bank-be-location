@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "dev": "job-bank-dev",
+    "qa": "job-bank-qa",
+    "prod": "job-bank-prod"
+  }
+}
