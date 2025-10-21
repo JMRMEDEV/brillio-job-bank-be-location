@@ -27,12 +27,12 @@ Search settlements by query parameter
 - **Response**: `{ settlements: string[], count: number, searchParam: string }`
 - **Features**: Case-insensitive partial matching, deduplication, alphabetical sorting
 
-### `GET /postalcode/check`
+### `GET /zipCode/check`
 Check if a postal code exists in the dataset
 - **Access**: Anonymous users and all authenticated roles
 - **Parameters**: 
   - `postalCode` (required): 5-digit numeric postal code
-- **Response**: `{ postalCode: string, exists: boolean }`
+- **Response**: `{ zipCode: string, exists: boolean }`
 - **Validation**: Must be exactly 5 digits
 
 ### `GET /location/coordinates`
@@ -42,7 +42,7 @@ Get coordinates for a specific location (requires all parameters)
   - `municipality` (required): Municipality name
   - `neighborhood` (required): Neighborhood/settlement name
   - `zipCode` (required): 5-digit postal code
-- **Response**: `{ municipality: string, neighborhood: string, zipCode: string, coordinates: { lat: number, lng: number } }`
+- **Response**: `{ municipality: string, neighborhood: string, zipCode: string, coordinates: { latitude: number, longitude: number } }`
 - **Error Response**: `404` if location not found
 
 ## Setup
@@ -118,14 +118,14 @@ curl -X GET "http://127.0.0.1:5001/job-bank-dev/us-central1/locationsAPIV2/settl
 
 ### Check Postal Code
 ```bash
-curl -X GET "http://127.0.0.1:5001/job-bank-dev/us-central1/locationsAPIV2/postalcode/check?postalCode=44100" \
+curl -X GET "http://127.0.0.1:5001/job-bank-dev/us-central1/locationsAPIV2/zipCode/check?postalCode=44100" \
   -H "Authorization: your-firebase-jwt-token"
 ```
 
 **Response:**
 ```json
 {
-  "postalCode": "44100",
+  "zipCode": "44100",
   "exists": true
 }
 ```
@@ -143,8 +143,8 @@ curl -X GET "http://127.0.0.1:5001/job-bank-dev/us-central1/locationsAPIV2/locat
   "neighborhood": "Guadalajara Centro",
   "zipCode": "44100",
   "coordinates": {
-    "lat": 20.6772283,
-    "lng": -103.3539401
+    "latitude": 20.6772283,
+    "longitude": -103.3539401
   }
 }
 ```
@@ -195,7 +195,7 @@ curl -X GET "http://127.0.0.1:5001/job-bank-dev/us-central1/locationsAPIV2/locat
 - **Middleware**: `allowAnonymousOrRoles` for universal access
 - **Data Processing**: Set-based deduplication with alphabetical sorting
 - **Validation**: Joi schemas for comprehensive input validation
-- **Coordinate Mapping**: CSV columns `lat`/`lon` mapped to `lat`/`lng` response format
+- **Coordinate Mapping**: CSV columns `lat`/`lon` mapped to `latitude`/`longitude` response format
 
 ## Data Source
 

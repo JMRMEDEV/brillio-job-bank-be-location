@@ -51,7 +51,7 @@ app.get('/settlements/search',
 );
 
 // GET - Check if postal code exists (anonymous + all roles)
-app.get('/postalcode/check', 
+app.get('/zipCode/check', 
   allowAnonymousOrRoles(['contractor', 'admin', 'superadmin', 'owner']),
   validateQuery(postalCodeSchema),
   async (req: Request, res: Response) => {
@@ -60,7 +60,7 @@ app.get('/postalcode/check',
       const exists = await searchPostalCode(postalCode);
       
       res.status(200).json({
-        postalCode,
+        zipCode: postalCode,
         exists
       });
     } catch (error) {

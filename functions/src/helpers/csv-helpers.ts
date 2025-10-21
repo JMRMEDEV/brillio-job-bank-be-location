@@ -74,7 +74,7 @@ export const searchLocationCoordinates = async (
   municipality?: string, 
   neighborhood?: string, 
   zipCode?: string
-): Promise<{ lat: number; lng: number } | null> => {
+): Promise<{ latitude: number; longitude: number } | null> => {
   const csvData = await getCSVData();
   
   const match = csvData.find(row => {
@@ -92,8 +92,8 @@ export const searchLocationCoordinates = async (
   
   if (match && match.lat && match.lon) {
     return {
-      lat: parseFloat(match.lat),
-      lng: parseFloat(match.lon)
+      latitude: parseFloat(match.lat),
+      longitude: parseFloat(match.lon)
     };
   }
   
