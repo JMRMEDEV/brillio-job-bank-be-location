@@ -11,9 +11,19 @@ export const querySchema = Joi.object({
 });
 
 export const searchQuerySchema = Joi.object({
-  q: Joi.string().required().min(1).max(100),
+  query: Joi.string().required().min(3).max(100),
   page: Joi.number().integer().min(1).default(1),
   size: Joi.number().integer().min(1).max(50).default(10),
   country: Joi.string().optional(),
   state: Joi.string().optional()
+});
+
+export const postalCodeSchema = Joi.object({
+  postalCode: Joi.string().required().min(5).max(5).pattern(/^\d{5}$/)
+});
+
+export const locationSearchSchema = Joi.object({
+  municipality: Joi.string().required().min(1).max(100),
+  neighborhood: Joi.string().required().min(1).max(100),
+  zipCode: Joi.string().required().min(5).max(5).pattern(/^\d{5}$/)
 });

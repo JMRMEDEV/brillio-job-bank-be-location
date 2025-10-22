@@ -1,45 +1,43 @@
+// CSV row structure from Jalisco postal code data
 export interface ILocationCSV {
   postalCode: string;
   settlement: string;
-  settlementType: string;
   municipality: string;
   state: string;
-  city: string;
-  postalCodeAlt: string;
-  stateCode: string;
-  officeCode: string;
-  postalCodeKey: string;
-  settlementTypeCode: string;
-  municipalityCode: string;
-  settlementIdCpcons: string;
-  zone: string;
-  cityCode: string;
-  lat: number;
-  lon: number;
-  geocodeSource: string;
-  geocodeNote: string;
-  confidence: string;
-  missReason: string;
-  precision: number;
+  lat: string;
+  lon: string;
 }
 
-export interface ILocation {
-  id: string;
-  name: string;
-  country: string;
-  state?: string;
-  city?: string;
-  coordinates?: {
-    latitude: number;
-    longitude: number;
-  };
-  timezone?: string;
-  created: number;
-  updated: number;
+// API Response interfaces
+export interface IMunicipalitiesResponse {
+  municipalities: string[];
+  count: number;
 }
 
-export interface ILocationPayload extends Omit<ILocation, 'id' | 'created' | 'updated'> {}
+export interface ISettlementSearchResponse {
+  settlements: string[];
+  count: number;
+  searchParam: string;
+}
 
+export interface IPostalCodeCheckResponse {
+  zipCode: string;
+  exists: boolean;
+}
+
+export interface ILocationCoordinates {
+  latitude: number;
+  longitude: number;
+}
+
+export interface ILocationCoordinatesResponse {
+  municipality?: string;
+  neighborhood?: string;
+  zipCode?: string;
+  coordinates: ILocationCoordinates;
+}
+
+// Express middleware types
 declare global {
   namespace Express {
     interface Request {
