@@ -35,6 +35,7 @@ interface EnvironmentConfig {
     projectId: string;
     privateKey: string;
     clientEmail: string;
+    storagePath: string;
   };
 }
 
@@ -46,6 +47,7 @@ const getEnvironmentConfig = (): EnvironmentConfig => {
       projectId: process.env.PROJECT_ID || '',
       privateKey: process.env.PRIVATE_KEY?.replace(/\\n/g, '\n') || '',
       clientEmail: process.env.CLIENT_EMAIL || '',
+      storagePath: process.env.STORAGE_PATH || '',
     },
   };
 

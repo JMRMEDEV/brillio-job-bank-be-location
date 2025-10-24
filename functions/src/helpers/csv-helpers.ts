@@ -1,10 +1,11 @@
 import * as admin from 'firebase-admin';
 import { parse } from 'csv-parse';
+import { config } from '../config/environment';
 
 // Get CSV data from Firebase Storage
 const getCSVData = async (): Promise<any[]> => {
   try {
-    const bucket = admin.storage().bucket('job-bank-dev.appspot.com');
+    const bucket = admin.storage().bucket(config.firebase.storagePath);
     const file = bucket.file('location/jalisco_cp_geocoded.csv');
     
     const [buffer] = await file.download();
